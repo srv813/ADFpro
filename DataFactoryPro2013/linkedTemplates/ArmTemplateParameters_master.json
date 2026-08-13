@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DataFactoryPro2013"
+		},
+		"LS_AzureDataLakeStorage_accountKey": {
+			"value": ""
+		},
+		"LS_AzureSqlDatabase_password": {
+			"value": ""
+		},
+		"LS_AzureDataLakeStorage_properties_typeProperties_url": {
+			"value": "https://dfstorage123.dfs.core.windows.net/"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_server": {
+			"value": "datafactorypro2026.database.windows.net"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_database": {
+			"value": "DataFactoryPro"
+		},
+		"LS_AzureSqlDatabase_properties_typeProperties_userName": {
+			"value": "srinivas1"
+		},
+		"ds_Rest_properties_typeProperties_url": {
+			"value": "https://pokeapi.co/api/v2/pokemon"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
