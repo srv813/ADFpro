@@ -1,0 +1,15 @@
+{
+	"name": "DataFactoryPro2013",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "australiaeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fd99a2be-7b6f-4323-b646-5df55388a8f4",
+		"tenantId": "d612b33c-7bc4-4a2e-8f8d-deab61c1f47f"
+	}
+}
