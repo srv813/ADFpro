@@ -13,21 +13,38 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "Upperstate"
+				},
+				{
+					"name": "selectcolumns"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
-				"          {_col0_} as string,",
-				"          {_col1_} as string,",
-				"          {_col2_} as string,",
-				"          {_col3_} as string,",
-				"          {_col4_} as string,",
-				"          {_col5_} as string,",
-				"          {_col6_} as string",
+				"          location_id as short,",
+				"          city as string,",
+				"          state as string,",
+				"          country as string,",
+				"          latitude as double,",
+				"          longitude as double,",
+				"          last_updated_timestamp as timestamp",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     limit: 1000,",
-				"     ignoreNoFilesFound: false) ~> source"
+				"     ignoreNoFilesFound: false) ~> source",
+				"source derive(state = upper(state)) ~> Upperstate",
+				"Upperstate select(mapColumn(",
+				"          location_id,",
+				"          city,",
+				"          state,",
+				"          latitude,",
+				"          last_updated_timestamp",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectcolumns"
 			]
 		}
 	}
