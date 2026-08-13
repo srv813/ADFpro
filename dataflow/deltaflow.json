@@ -13,11 +13,7 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [
-				{
-					"name": "UpperState"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(output(",
 				"          {_col0_} as string,",
@@ -29,10 +25,9 @@
 				"          {_col6_} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: true,",
+				"     validateSchema: false,",
 				"     limit: 1000,",
-				"     ignoreNoFilesFound: false) ~> source",
-				"source derive() ~> UpperState"
+				"     ignoreNoFilesFound: false) ~> source"
 			]
 		}
 	}
