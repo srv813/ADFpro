@@ -12,13 +12,24 @@
 					"name": "source"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "LS_AzureDataLakeStorage",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "Upperstate"
 				},
 				{
 					"name": "selectcolumns"
+				},
+				{
+					"name": "alterRows"
 				}
 			],
 			"scriptLines": [
@@ -44,7 +55,27 @@
 				"          last_updated_timestamp",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectcolumns"
+				"     skipDuplicateMapOutputs: true) ~> selectcolumns",
+				"selectcolumns alterRow(upsertIf(1==1)) ~> alterRows",
+				"alterRows sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'sink',",
+				"     folderPath: 'deltasink',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: false,",
+				"     updateable: false,",
+				"     upsertable: true,",
+				"     keys:['location_id'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
